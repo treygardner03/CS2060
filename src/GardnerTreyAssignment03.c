@@ -19,18 +19,13 @@ int main() {
     printf("Please input the size of the multiplication table: ");
     scanf("%d", &user_table_limit);
 
-    //calculating multiplication table
-    for(int i = 1; i <= user_table_limit; i++) {
-        printf("%-5d", i);
-    }
-    for (int j = 2; j <= user_table_limit; j++) {
+    //calculating and printing multiplication table
+    for (int j = user_table_limit; j >= 1; j--) {
         printf("\n");
-        for (int i = 1; i < user_table_limit + 1; i++) {
+        for (int i = user_table_limit; i >= 1; i--) {
             printf("%-5d", (i*j));
         }
     }
-
-    //printing table (reverse order)
 
     //3.2 Summing the values of 8's multiplication table
     const int integer_for_table = 8;
