@@ -45,7 +45,7 @@ int main() {
         summation_value += multiplication_table_value;
     }
     //printing the sum of the values in the multiplication table
-    printf("\n\nMultiplication table summation value: %d\n", summation_value);
+    printf("\n\nThe summation of 8's multiplication table is: %d\n", summation_value);
 
     //3.3 Calculate the factorial of an inputted number (whole number)
     int user_factorial_value;
@@ -59,7 +59,7 @@ int main() {
         factorial_value = factorial_value * i;
     }
     //print value
-    printf("\nFactorial value: %d", factorial_value);
+    printf("\nFactorial value: %d\n", factorial_value);
 
     //3.4 Determining if an inputted value is a prime number or not
     int user_prime_number;
