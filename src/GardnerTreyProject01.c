@@ -13,13 +13,15 @@ int main() {
  int maximum_value = 1000;
  int minimum_value = 1;
  int user_guess;
+ int number_of_guesses = 0;
+
   srand(time(NULL));
  int random_number = rand() % maximum_value + minimum_value;
 
  printf("Please try to guess a number betweeen 1-1000: ");
 
  while (user_guess != random_number) {
- scanf("%d", &user_guess);
+  scanf("%d", &user_guess);
    if(user_guess < minimum_value) {
      printf("Please enter a number betweeen 1-1000: ");
    }
@@ -32,6 +34,7 @@ int main() {
    if(user_guess > random_number) {
      printf("Enter a lower number: ");
    }
+   number_of_guesses++;
  }
- printf("You Win!!");
+    printf("\nYou Win!\nIt took you %d number of tries to guess: %d", number_of_guesses, random_number);
 }
