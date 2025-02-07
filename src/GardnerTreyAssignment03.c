@@ -59,7 +59,7 @@ int main() {
         factorial_value = factorial_value * i;
     }
     //print value
-    printf("\nFactorial value: %d\n", factorial_value);
+    printf("Factorial value: %d\n", factorial_value);
 
     //3.4 Determining if an inputted value is a prime number or not
     int user_prime_number;
@@ -77,5 +77,5 @@ int main() {
         }
         prime_counter++;
     }
-    is_prime ? printf("\nYour number IS prime!") : printf("\nYour number is not prime!");
+    is_prime ? printf("\nYour number IS prime!") : printf("\nYour number is NOT prime!");
 }
