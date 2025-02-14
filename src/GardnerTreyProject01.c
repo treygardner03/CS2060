@@ -10,16 +10,20 @@ either "Higher" or "Lower" until the user guesses the number
 #include <time.h>
 
 int main() {
+ //initializing the range for random number and user info
  int maximum_value = 1000;
  int minimum_value = 1;
  int user_guess;
  int number_of_guesses = 0;
 
+  //generating random number between determined range
   srand(time(NULL));
  int random_number = rand() % maximum_value + minimum_value;
 
+ //Prompting user for guess
  printf("Please try to guess a number betweeen 1-1000: ");
 
+ //Determining where the user's guess is in relation to the random number
  while (user_guess != random_number) {
   scanf("%d", &user_guess);
    if(user_guess < minimum_value) {
@@ -36,5 +40,6 @@ int main() {
    }
    number_of_guesses++;
  }
+    //ONLY PRINTS after loop (loop only ends if user guesses the random number)
     printf("\nYou Win!\nIt took you %d number of tries to guess: %d", number_of_guesses, random_number);
 }
