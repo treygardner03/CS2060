@@ -73,7 +73,7 @@ int main() {
     //Part A: hardcoded values
       float temperature_celsius = 242.31f;
       printf("\nUsing hardcoded values: ");
-      float temperature_fahrenheit = (9/5 * temperature_celsius) + 32;
+      float temperature_fahrenheit = (9.0/5.0 * temperature_celsius) + 32;
       printf("\nConverting hardcoded temperature of 242.31C to Fahrenheit: ");
       printf("%.2f\n", temperature_fahrenheit);
 
@@ -83,7 +83,7 @@ int main() {
 
       //Calculating with user inputted values
         printf("\nYour new temperature in Fahrenheit is: ");
-        temperature_fahrenheit = (9/5 * temperature_celsius) + 32;
+        temperature_fahrenheit = (9.0/5.0 * temperature_celsius) + 32;
         printf("%.2f\n",temperature_fahrenheit);
 
   //1.4 Calculating simple interest
