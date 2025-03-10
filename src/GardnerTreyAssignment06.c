@@ -12,8 +12,7 @@ Description: This program will;
 #include <stdlib.h>
 #include <string.h>
 
-int main()
-{
+int main() {
   //6.1 - copying one string to another (manually)
   //A.) take a string as an input
   //defining variables
@@ -81,6 +80,7 @@ int main()
     }
   }
 
+  //COULD JUST USE strcmp(); but i wanted to do it manually
   //C.) comparing strings
   for (int i = 0; i < trimmed_counter; i++) {
     if (input_string_trimmed[i] == string_reversed[i]) {
@@ -114,11 +114,26 @@ int main()
 
   //6.4 - finding the longest word in a given string
   //defining variables
-  int longest_word = 0;
+  counter = 0;
+  char* temp_string;
+  char* longest_string;
   int current_word  = 0;
+  int temp_word = 0;
   for (int i = 0; i < string_length; i++) {
+    //checking for end/beginning of word
     if (input_string[i] != '\0' && input_string[i] != ' ' && input_string[i] != '\n') {
-
+      //settings pointer to beginning of word
+      if (temp_word == 0) {
+        temp_string = &input_string[i];
+      } else if (temp_word > current_word) {
+        current_word = temp_word;
+        longest_string = temp_string;
+        temp_word = 0;
+      }//else if: assigning the longest word
     }
-  }
+      temp_word++;
+  }//for loop: looping through whole string
+
+
+  printf("The largest word in your provided string is : %s", longest_word);
 }
