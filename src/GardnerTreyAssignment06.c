@@ -16,46 +16,40 @@ int main() {
   //6.1 - copying one string to another (manually)
   //A.) take a string as an input
   //defining variables
-  char buffered_input_string[50];
+  char input_string[50];
   int string_length = 0;
 
-  //recieving input
+  //receiving input
   printf("\nEnter a string to be copied: ");
-  gets(buffered_input_string);
-  while (buffered_input_string[string_length] != '\0') {
-    string_length++;
-  }
-  //adding null terminated value
-  string_length++;
+  fgets(input_string, sizeof(input_string), stdin);
 
-  //adjusting string length
-  char input_string[string_length];
-  for (int i = 0; i < string_length; i++) {
-    if (i < string_length - 1)
-    {
-      input_string[i] = buffered_input_string[i];
-    }
-    else {
-      input_string[i] = '\0';
-    }
+  //inserting null termination
+  input_string[strcspn(input_string, "\n")] = '\0';
+
+  //getting string length
+  int length_counter = 0;
+  while (input_string[length_counter] != '\0') {
+    string_length++;
+    length_counter++;
   }
+
   //B.) Displaying original string
   printf("Your original string is: %s\n", input_string);
   //C.) Copying string into new string
   //defining usable vairables
   int counter = 0;
   int trimmed_counter = 0;
-  char string_copy[50];
-  while (input_string[counter] != '\0') {
-    string_copy[counter] = input_string[counter];
+  char string_copy[string_length];
+
+  for (int i = 0; i < string_length; i++) {
+    string_copy[i] = input_string[i];
     counter++;
-    if (input_string[counter] == '\n') {
-      string_copy[counter] = '\0';
-    }
-    if (input_string[counter] != ' ') {
-      trimmed_counter++;
+    trimmed_counter++;
+    if (input_string[i] == ' ') {
+      trimmed_counter--;
     }
   }
+
   //D.) Displaying string copy
   printf("My copied String is: %s\n\n", string_copy);
 
@@ -73,7 +67,7 @@ int main() {
   char input_string_trimmed[trimmed_counter];
 
   //coping only trimmed values
-  for (int i = 0; i < trimmed_counter; i++) {
+  for (int i = 0; i < string_length; i++) {
     if (string_copy[i] != ' ') {
       input_string_trimmed[i] = string_copy[i];
       string_reversed[trimmed_counter - 1 - i] = string_copy[i];
@@ -89,51 +83,57 @@ int main() {
   }
 
   if (counter == trimmed_counter) {
-    printf("\nYour string IS a palindrome!\n");
+    printf("Your string IS a palindrome!\n");
     printf("Your original string trimmed of spaces and case-sensitivity is: %s\n", string_copy);
     printf("Your reversed string trimmed of space and case-sensitivity is: %s\n", string_reversed);
   }
   else {
-    printf("Your string is NOT a palindrome");
+    printf("Your string is NOT a palindrome\n");
   }
 
   //6.3 - Count vowels and consonants
   //defining usable variables
   int vowels = 0;
   int consonants = 0;
-  for (int i = 0; i < trimmed_counter; i++) {
-    if (string_copy[i] == 'a' || string_copy[i] == 'e' || string_copy[i] == 'i' || string_copy[i] == 'o' || string_copy[i] == 'u') {
+
+  for (int i = 0; i < string_length; i++) {
+    if (input_string[i] == 'a' || input_string[i] == 'e' || input_string[i] == 'i' || input_string[i] == 'o' || input_string[i] == 'u') {
       vowels++;
     }
-    else {
+    else if (input_string[i] != ' ') {
       consonants++;
     }
   }
 
-  printf("\nYour string %s has: \nVowels: %d\nConsonants: %d", input_string, vowels, consonants);
+  printf("\nYour string %s has: \nVowels: %d\nConsonants: %d\n", input_string, vowels, consonants);
 
   //6.4 - finding the longest word in a given string
   //defining variables
   counter = 0;
-  char* temp_string;
-  char* longest_string;
-  int current_word  = 0;
-  int temp_word = 0;
+  int test_word = 0;
+  int longest_word = 0;
+  char* string_pointer;
   for (int i = 0; i < string_length; i++) {
-    //checking for end/beginning of word
-    if (input_string[i] != '\0' && input_string[i] != ' ' && input_string[i] != '\n') {
-      //settings pointer to beginning of word
-      if (temp_word == 0) {
-        temp_string = &input_string[i];
-      } else if (temp_word > current_word) {
-        current_word = temp_word;
-        longest_string = temp_string;
-        temp_word = 0;
-      }//else if: assigning the longest word
+    if (test_word == 0) {
+      string_pointer = &input_string[i];
     }
-      temp_word++;
-  }//for loop: looping through whole string
 
+    if (test_word > longest_word) {
+      longest_word = test_word;
+    }
 
-  printf("The largest word in your provided string is : %s", longest_word);
+    if (input_string[i] != ' ') {
+      test_word++;
+    }
+    else {
+      test_word = 0;
+    }
+
+  }
+
+  char longest_string[longest_word];
+  for (int i = 0; i < longest_word + 1; i++) {
+    longest_string[i] = *(string_pointer + i);
+  }
+  printf("\nThe largest word in your provided string is : %s", longest_string);
 }
