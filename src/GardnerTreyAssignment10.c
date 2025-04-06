@@ -91,5 +91,29 @@ int main()
   //displaying the results
   printf("The final integer reduced to a single digit is: %d\n", reduced_integer);
 
+}
   //EXTRA CHALLENGE: Return the number of recursions each function used and what the values were as it changes
+
+//finding the greatest common devisor
+int greatest_common_divisor(int a, int b)
+{
+
+}
+
+//summing integer array
+int recursive_summation(int int_array[])
+{
+
+}
+
+//counting vowels in a string
+int recursive_vowel_count(char string[])
+{
+
+}
+
+//reducing integer using addition
+int recursive_integer_reduction(int num)
+{
+
 }
