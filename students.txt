@@ -1,0 +1,4 @@
+All Student Records: 
+Student #111466749 -> Name: Trey Gardner GPA: 3.46
+Student #734777347 -> Name: Haylie Gardner GPA: 4.00
+Student #696420969 -> Name: Bug Gardner GPA: 3.67

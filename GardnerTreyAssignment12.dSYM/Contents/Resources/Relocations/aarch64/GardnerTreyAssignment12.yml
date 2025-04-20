@@ -1,0 +1,5 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     GardnerTreyAssignment12
+relocations:     []
+...
