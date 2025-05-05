@@ -34,7 +34,7 @@ int main(void)
  bool game_end = false;
  char user_input;
  char computer_choice;
- int round = 0;
+ int round = 1;
  int round_results = 0;
  int user_score = 0;
  int computer_score = 0;
@@ -43,12 +43,13 @@ int main(void)
  while (!game_end || round == NUM_ROUNDS)
  {
   //user input
-  printf("\n\nRound #%i: ", round);
+  printf("\n\nRound %i/%i: ", round, NUM_ROUNDS);
   printf("\nPlease choose snake(S), water(W) or gun(G): ");
   scanf("%c", &user_input);
   user_input = toupper(user_input);
 
    //check for game end (user input)
+     //input validation...
   if(user_input == 'E') game_end = true;
 
   else//comparisons and results
@@ -57,7 +58,7 @@ int main(void)
       computer_choice = computer_input();
 
       //compare inputs
-      round_results = compare_inputs(user_input, computer_input);
+      round_results = compare_inputs(user_input, computer_choice);
 
       //tally score
       score_tally(&user_score, &computer_score, round_results);
@@ -130,5 +131,9 @@ void display_round_results(int round_results, int rounds, char user_input, char 
 //display cumulative results
 void display_final_results(int user_score, int computer_score, int rounds)
 {
-  printf("%sRound Results:\nNumber of Rounds: %i\nYour Score: %i\nComputer Score: %i", LINE_BREAK, rounds, user_score, computer_score);
+  printf("%s\nRound Results:\nNumber of Rounds: %i\nYour Score: %i\nComputer Score: %i", LINE_BREAK, rounds, user_score, computer_score);
+  if (user_score > computer_score) printf("\nYou WIN!!!");
+  else if (user_score < computer_score) printf("\nThe computer WINS!!!");
+  else printf("\nITS A TIE!");
+
 }//display final results
